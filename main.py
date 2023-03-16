@@ -47,7 +47,7 @@ while True:
     datas = get_qr_data(img)
     url_opener(datas)
 
-    cv2.imshow('frame', img)  # Display the resulting frame
+    cv2.imshow('QR-Code Scanner', img)  # Display the resulting frame
 
     if cv2.waitKey(1) & 0xFF == ord('q'):  # Quit when 'q' is pressed
         break
