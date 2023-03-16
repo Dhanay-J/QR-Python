@@ -1,6 +1,6 @@
 import cv2, re, webbrowser, validators
 import numpy as np
-
+from random import randint
 from pyzbar.pyzbar import decode
 
 vid = cv2.VideoCapture(0)
@@ -22,6 +22,9 @@ def get_qr_data(img) -> list:
         if data:
             qr_datas.append(data)
     return qr_datas  # Get list of data property of all qr-codes in the image
+
+
+text_color = (randint(0, 255), randint(0, 255), randint(0, 255))
 
 
 def url_opener(datas: list) -> None:
@@ -46,6 +49,12 @@ while True:
     ret, img = vid.read()
     datas = get_qr_data(img)
     url_opener(datas)
+
+    img = cv2.flip(img, 1)
+
+    cv2.putText(img, 'Press Q to Quit', (0, 25), cv2.FONT_HERSHEY_SIMPLEX, 1, text_color, 2, cv2.LINE_4)
+    cv2.putText(img, 'Press R for refreshing memory', (0, 60), cv2.FONT_HERSHEY_SIMPLEX, 1, text_color, 2,
+                cv2.LINE_4)
 
     cv2.imshow('QR-Code Scanner', img)  # Display the resulting frame
 

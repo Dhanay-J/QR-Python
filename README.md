@@ -7,6 +7,7 @@
     2. Open-Cv > pip install opencv-python
     3. Numpy > pip install numpy
     4. Pyzbar > pip install pyzbar
+   5. Validators > pip install validators
 
 2) Pre-requisite : Hardware
     1. Camera
